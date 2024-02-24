@@ -20,30 +20,32 @@ function openNav() {
     for(let i = 1;i<=5;i++)
     {
       const group = $('.question-'+i).children().children();
-      console.log(group[0]["checked"]);
+      // console.log(group[0]["checked"]);
       for(let j =0;j<group.length;j++)
       {
         let ok = 0;
        
         if(group[j]["checked"])
         {
-          ans_array[i] = group[j]["value"];
+          ans_array[i-1] = group[j]["value"];
           ok = 1;
-          console.log(1);
+          // console.log(1);
           break;
           
         }
         if(ok == 0)
-          ans_array[i] = 0;
+          ans_array[i-1] = 0;
       }
     }
     console.log(ans_array);
     let percent = 0;
+    // console.log(correct_res);
     for(let i = 0;i<5;i++)
     {
       if(ans_array[i] == correct_res[i])
         percent++;
     }
+    // console.log(percent)
     let result = percent*20;
     Swal.fire({
       title: "Ai obtinut " + result + "%",
